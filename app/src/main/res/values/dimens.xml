@@ -7,6 +7,8 @@
     <dimen name="margin_24dp">24dp</dimen>
     <dimen name="margin_40dp">40dp</dimen>
 
+    <dimen name="splash_screen_logo_size">80dp</dimen>
+
     <!-- logo  -->
     <dimen name="logo_wrapper_layout_border_radius_24dp">24dp</dimen>
     <dimen name="logo_size">140dp</dimen>

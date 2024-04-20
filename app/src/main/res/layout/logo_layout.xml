@@ -13,7 +13,7 @@
         android:layout_width="@dimen/logo_icon_size"
         android:layout_height="@dimen/logo_icon_size"
         android:layout_gravity="center"
-        android:src="@drawable/splah_screen_logo_icon" />
+        android:src="@drawable/splash_screen_logo_icon" />
 
 
 </androidx.cardview.widget.CardView>
