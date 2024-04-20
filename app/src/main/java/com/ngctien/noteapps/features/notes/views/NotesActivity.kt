@@ -1,5 +1,6 @@
 package com.ngctien.noteapps.features.notes.views
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.ngctien.noteapps.R
 import com.ngctien.noteapps.data.NOTES
+import com.ngctien.noteapps.data.Note
 import com.ngctien.noteapps.databinding.ActivityNotesBinding
+import com.ngctien.noteapps.features.detail.NoteDetailActivity
 import com.ngctien.noteapps.features.notes.adapter.NoteListAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +29,7 @@ class NotesActivity : AppCompatActivity() {
     }
 
     private val noteListAdapter by lazy(LazyThreadSafetyMode.NONE) {
-        NoteListAdapter()
+        NoteListAdapter(onItemClick = ::handleOnClickItem)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +37,7 @@ class NotesActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupViews()
         CoroutineScope(Dispatchers.IO).launch {
-            delay(0)
+            delay(1000)
             noteListAdapter.submitList(NOTES)
             withContext(Dispatchers.Main){
                 binding.notes.visibility = View.VISIBLE
@@ -59,6 +62,11 @@ class NotesActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = noteListAdapter
             addItemDecoration(divider)
+        }
+    }
+    private fun handleOnClickItem(note: Note) {
+        Intent(this, NoteDetailActivity::class.java).run {
+            startActivity(this)
         }
     }
 }
