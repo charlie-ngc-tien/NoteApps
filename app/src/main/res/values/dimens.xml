@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_margin">26dp</dimen>
+    <dimen name="margin_6dp">6dp</dimen>
+    <dimen name="margin_12dp">12dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+
+    <!-- logo  -->
+    <dimen name="logo_wrapper_layout_border_radius_24dp">24dp</dimen>
+    <dimen name="logo_size">140dp</dimen>
+    <dimen name="logo_icon_size">40dp</dimen>
+    <dimen name="logo_margin_top">44dp</dimen>
+    <dimen name="logo_margin_bottom">60dp</dimen>
+
+    <!-- notes page -->
+    <dimen name="floating_button_size">58dp</dimen>
+    <dimen name="divider_size">0.25dp</dimen>
+</resources>

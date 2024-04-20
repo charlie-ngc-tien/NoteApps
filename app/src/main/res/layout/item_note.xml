@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginVertical="@dimen/margin_24dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="✍️ Youtube script ideas"
+        android:textAppearance="@style/HeadLine.H6"
+        android:layout_marginBottom="@dimen/margin_12dp"/>
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="There are many apps in Android that can run or emulate other operating systems, via utilizing hardware support for platform... "
+        android:textAppearance="@style/Body.Regular" />
+</LinearLayout>

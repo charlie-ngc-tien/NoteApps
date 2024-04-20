@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:fontWeight="300"
+        android:font="@font/gilroy_light" />
+    <font
+        android:fontWeight="400"
+        android:font="@font/gilroy_regular" />
+    <font
+        android:fontWeight="500"
+        android:font="@font/gilroy_medium" />
+    <font
+        android:fontWeight="700"
+        android:font="@font/gilroy_bold" />
+    <font
+        android:fontWeight="900"
+        android:font="@font/gilroy_heavy" />
+</font-family>
