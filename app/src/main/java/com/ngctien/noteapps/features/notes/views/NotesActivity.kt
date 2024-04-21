@@ -14,6 +14,7 @@ import com.ngctien.noteapps.R
 import com.ngctien.noteapps.data.NOTES
 import com.ngctien.noteapps.data.Note
 import com.ngctien.noteapps.databinding.ActivityNotesBinding
+import com.ngctien.noteapps.features.addnote.AddNoteActivity
 import com.ngctien.noteapps.features.detail.NoteDetailActivity
 import com.ngctien.noteapps.features.notes.adapter.NoteListAdapter
 import kotlinx.coroutines.CoroutineScope
@@ -63,9 +64,18 @@ class NotesActivity : AppCompatActivity() {
             adapter = noteListAdapter
             addItemDecoration(divider)
         }
+        binding.addNote.setOnClickListener {
+            handleAddNoteButtonClicked()
+        }
     }
     private fun handleOnClickItem(note: Note) {
         Intent(this, NoteDetailActivity::class.java).run {
+            startActivity(this)
+        }
+    }
+
+    private fun handleAddNoteButtonClicked() {
+        Intent(this, AddNoteActivity::class.java).run {
             startActivity(this)
         }
     }
