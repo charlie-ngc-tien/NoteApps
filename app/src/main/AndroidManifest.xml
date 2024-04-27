@@ -16,15 +16,6 @@
             android:name=".features.base.views.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".features.addnote.views.AddNoteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".features.detail.views.NoteDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".features.notes.views.NotesActivity"
-            android:exported="true" />
-        <activity
             android:name=".features.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
