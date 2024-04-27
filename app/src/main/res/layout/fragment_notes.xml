@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".features.notes.views.NotesActivity">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        app:contentInsetStart="0dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/HeadLine.H5"
-            android:text="All Notes"
-            android:layout_marginStart="@dimen/margin_24dp"/>
-
-    </androidx.appcompat.widget.Toolbar>
+    <include layout="@layout/custom_tool_bar" />
 
     <LinearLayout
         android:id="@+id/empty_state_view"
@@ -54,12 +38,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes"
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_marginHorizontal="@dimen/margin_24dp"
         android:clipToPadding="false"
-        android:visibility="gone"
-        android:layout_marginHorizontal="@dimen/margin_24dp"/>
+        android:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNote"

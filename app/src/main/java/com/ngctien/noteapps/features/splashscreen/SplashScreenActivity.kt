@@ -1,20 +1,20 @@
-package com.ngctien.noteapps
+package com.ngctien.noteapps.features.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.ngctien.noteapps.features.authentication.views.SignInActivity
+import com.ngctien.noteapps.features.base.views.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        openSignInActivity()
+        openMainActivity()
     }
 
-    private fun openSignInActivity() {
-        Intent(this, SignInActivity::class.java).run {
+    private fun openMainActivity() {
+        Intent(this, MainActivity::class.java).run {
             startActivity(this)
             finish()
         }
