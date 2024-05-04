@@ -5,6 +5,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.ngctien.noteapps.R
+import java.text.SimpleDateFormat
+import java.util.Date
 
 fun FragmentActivity.replaceFragment(
     fragment: Fragment,
@@ -24,5 +26,12 @@ fun Fragment.popBackStack() {
 }
 
 fun Fragment.popBackStackUntilRoot() {
-    requireActivity().supportFragmentManager.popBackStack(this::class.simpleName, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    requireActivity().supportFragmentManager.popBackStack(
+        this::class.simpleName,
+        FragmentManager.POP_BACK_STACK_INCLUSIVE
+    )
+}
+
+fun Date.format(): String {
+    return SimpleDateFormat("dd MMMM YYYY, hh:mm a").format(this)
 }

@@ -6,27 +6,29 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.ngctien.noteapps.R
 import com.ngctien.noteapps.databinding.CustomToolBarBinding
 import com.ngctien.noteapps.common.BaseFragment
-import com.ngctien.noteapps.data.NOTES
+import com.ngctien.noteapps.core.viewmodels.MainViewModel
 import com.ngctien.noteapps.data.Note
 import com.ngctien.noteapps.databinding.FragmentNotesBinding
 import com.ngctien.noteapps.features.addnote.views.AddNoteFragment
 import com.ngctien.noteapps.features.detail.views.NoteDetailFragment
 import com.ngctien.noteapps.features.notes.adapter.NoteListAdapter
+import com.ngctien.noteapps.utils.ArgumentsKey.KEY_NOTE
 import com.ngctien.noteapps.utils.replaceFragment
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class NotesFragment : BaseFragment<FragmentNotesBinding>() {
     private val noteListAdapter by lazy(LazyThreadSafetyMode.NONE) {
         NoteListAdapter(onItemClick = ::handleOnClickItem)
     }
+
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,25 +43,18 @@ class NotesFragment : BaseFragment<FragmentNotesBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        lifecycleScope.launch {
-            delay(1000)
-            noteListAdapter.submitList(NOTES)
-            binding?.apply {
-                notes.visibility = View.VISIBLE
-                emptyStateView.visibility = View.GONE
-            }
-        }
+        observeData()
     }
 
     private fun initViews() {
         toolBarBinding?.apply {
             backButton.visibility = View.GONE
-            title.visibility = View.VISIBLE
-            title.text = "All Notes"
-            title.gravity = Gravity.START
+            toolbarTitle.visibility = View.VISIBLE
+            toolbarTitle.text = "All Notes"
+            toolbarTitle.gravity = Gravity.START
         }
         binding?.apply {
-            notes.apply {
+            recyclerViewNotes.apply {
                 val divider =
                     MaterialDividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
                         dividerColor = context.getColor(R.color.divider_color)
@@ -80,10 +75,24 @@ class NotesFragment : BaseFragment<FragmentNotesBinding>() {
     }
 
     private fun handleOnClickItem(note: Note) {
-        requireActivity().replaceFragment(NoteDetailFragment(), true)
+        val fragment = NoteDetailFragment()
+        val bundle = Bundle()
+        bundle.putSerializable(KEY_NOTE, note)
+        fragment.arguments = bundle
+        requireActivity().replaceFragment(fragment, true)
     }
 
     private fun handleAddNoteButtonClicked() {
         requireActivity().replaceFragment(AddNoteFragment(), true)
+    }
+
+    private fun observeData() {
+        viewModel.notesLiveData.observe(viewLifecycleOwner) {
+            noteListAdapter.submitList(it)
+            binding?.apply {
+                recyclerViewNotes.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+                emptyStateView.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
+            }
+        }
     }
 }

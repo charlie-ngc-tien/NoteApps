@@ -17,25 +17,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="none"
-            app:hintEnabled="false">
+            app:hintEnabled="false"
+            app:hintTextColor="#98A8B7">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Title"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:padding="0dp"
                 android:paddingStart="0dp"
                 android:textAppearance="@style/HeadLine.H4"
-                android:textColor="#98A8B7" />
+                android:scrollHorizontally="true"
+                android:scrollbars="none"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="none"
-            app:hintEnabled="false">
+            app:hintEnabled="false"
+            app:hintTextColor="#98A8B7">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtContent"
@@ -44,12 +47,12 @@
                 android:hint="Your note here..."
                 android:lineHeight="28dp"
                 android:paddingStart="0dp"
-                android:textAppearance="@style/Body.Regular"
-                android:textColor="#98A8B7" />
+                android:textAppearance="@style/Body.Regular" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

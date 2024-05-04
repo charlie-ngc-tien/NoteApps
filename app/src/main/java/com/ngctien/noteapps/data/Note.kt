@@ -1,7 +1,12 @@
 package com.ngctien.noteapps.data
 
-data class Note(val id: Int, val title: String, val content: String)
+import java.io.Serializable
+import java.util.Date
 
+data class Note(val id: String, val title: String, val content: String, val createdDate: Date) :
+    Serializable
+
+/*
 val NOTES = listOf(
     Note(
         id = 1,
@@ -24,3 +29,4 @@ val NOTES = listOf(
         content = "There are many apps in Android that can run or emulate other operating systems, via utilizing hardware support for platform... "
     )
 )
+*/
