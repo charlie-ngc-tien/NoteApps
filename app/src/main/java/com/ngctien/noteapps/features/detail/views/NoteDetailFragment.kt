@@ -1,12 +1,9 @@
 package com.ngctien.noteapps.features.detail.views
 
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import com.ngctien.noteapps.databinding.CustomToolBarBinding
 import com.ngctien.noteapps.common.BaseFragment
 import com.ngctien.noteapps.data.Note
@@ -44,7 +41,6 @@ class NoteDetailFragment : BaseFragment<FragmentNoteDetailBinding>() {
             requireArguments().run {
                 if (containsKey(KEY_NOTE)) {
                     val note = getSerializable(KEY_NOTE, Note::class.java)!!
-                    Log.e("tien.ngc", "${note.title} ${note.content}")
                     binding?.apply {
                         noteTitle.text = note.title
                         noteContent.text = note.content
